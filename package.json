@@ -1,0 +1,97 @@
+{
+  "name": "spexdoc",
+  "version": "1.9.0",
+  "description": "Digital health assistant",
+  "private": false,
+  "main": "dist/index.js",
+  "dependencies": {
+    "@material-ui/core": "4.10.0",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "latest",
+    "axios": "^0.19.2",
+    "chartist": "0.10.1",
+    "classnames": "2.2.6",
+    "history": "4.10.1",
+    "perfect-scrollbar": "1.5.0",
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-chartist": "0.14.3",
+    "react-dom": "17.0.1",
+    "react-google-maps": "9.4.5",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.1",
+    "react-swipeable-views": "0.13.9",
+    "firebase": "^7.8.2",
+    "firebase-admin": "latest",
+    "react-table": "7.3.3",
+    "namor": "^1.1.2",
+    "styled-components": "^4.3.2",
+    "material-table": "latest",
+    "bitly": "7.1.0",
+    "qrcode.react": "1.0.0",
+    "react-cookie-consent": "6.2.1",
+    "react-icons": "latest",
+    "react-to-print": "2.12.0",
+    "redux": "4.0.5",
+    "web-vitals": "^0.2.4",
+    "workbox-background-sync": "^5.1.4",
+    "workbox-broadcast-update": "^5.1.4",
+    "workbox-cacheable-response": "^5.1.4",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-google-analytics": "^5.1.4",
+    "workbox-navigation-preload": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-range-requests": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4",
+    "workbox-streams": "^5.1.4",
+    "@devexpress/dx-react-scheduler-material-ui": "2.7.3",
+    "@devexpress/dx-react-scheduler": "2.7.3",
+    "@devexpress/dx-react-core": "2.7.3",
+    "@iconify/react": "latest",
+    "@iconify-icons/fa-solid": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
+    "build-package": "npm run build-package-css && babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashtag32/spexdocapp.git"
+  },
+  "keywords": [],
+  "author": "SpexDoc <info@spexdoc.net> (https://www.spexdoc.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hashtag32/spexdocapp/issues"
+  },
+  "optionalDependencies": {
+    "@types/googlemaps": "3.39.6",
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.12.2",
+    "typescript": "3.9.3"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "prettier": "2.0.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": []
+  }
+}
