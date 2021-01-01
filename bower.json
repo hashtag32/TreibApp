@@ -1,8 +1,8 @@
 {
-  "name": "SpexDoc Dashboard",
-  "homepage": "https://spexdoc.net",
+  "name": "TreibApp Dashboard",
+  "homepage": "https://app.treib.eu",
   "authors": [
-    "SpexDoc"
+    "TreibApp"
   ],
   "description": "Digital health assistant",
   "main": "public/index.html",
@@ -15,7 +15,7 @@
     "google",
     "twitter"
   ],
-  "license": "SpexDoc",
+  "license": "TreibApp",
   "ignore": [
     "**/.*",
     "node_modules",

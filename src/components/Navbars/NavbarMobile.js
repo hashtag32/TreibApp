@@ -84,7 +84,7 @@ class Navbar extends React.Component {
             {/* Here we create navbar brand, based on route name */}
             <Button color="transparent" href="/" className={classes.title}>
             <Typography variant="h5" color="primary">
-              SpexDoc
+              TreibApp
               </Typography>
             </Button>
           </div>

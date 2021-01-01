@@ -1,4 +1,4 @@
-# [SpexDoc](https://app.spexdoc.net) 
+# [TreibApp](https://app.TreibApp.net) 
 
 ## Your digital health assistant
 

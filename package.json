@@ -1,5 +1,5 @@
 {
-  "name": "spexdoc",
+  "name": "TreibApp",
   "version": "1.9.0",
   "description": "Digital health assistant",
   "private": false,
@@ -65,13 +65,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hashtag32/spexdocapp.git"
+    "url": "git+https://github.com/hashtag32/TreibAppapp.git"
   },
   "keywords": [],
-  "author": "SpexDoc <info@spexdoc.net> (https://www.spexdoc.net/)",
+  "author": "TreibApp <info@treib.eu> (https://app.treib.eu/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hashtag32/spexdocapp/issues"
+    "url": "https://github.com/hashtag32/treibapp/issues"
   },
   "optionalDependencies": {
     "@types/googlemaps": "3.39.6",
