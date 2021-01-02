@@ -150,13 +150,6 @@ class BottomAppBarMobile extends React.Component {
 
             <BottomNavigationAction
               component={Link}
-              to="/premium"
-              label="Premium"
-              icon={<RiVipCrown2Fill style={{ width: 25, height: 25 }} />}
-            />
-
-            <BottomNavigationAction
-              component={Link}
               to="/notifications"
               label="Nachrichten"
               icon={

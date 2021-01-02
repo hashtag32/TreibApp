@@ -46,7 +46,7 @@ const dashboardRoutes = [
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
-    layout: "/sidebar",
+    layout: "/navbar",
   },
   {
     path: "/user",
@@ -54,11 +54,11 @@ const dashboardRoutes = [
     rtlName: "ملف تعريفي للمستخدم",
     icon: AssignmentIndIcon,
     component: UserProfile,
-    layout: "/sidebar",
+    layout: "/navbar",
   },
   {
     path: "/medRecords",
-    name: "Befunde",
+    name: "Alex",
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: MedRecords,
@@ -66,7 +66,7 @@ const dashboardRoutes = [
   },
   {
     path: "/appointments",
-    name: "Termine",
+    name: "Christel",
     rtlName: "طباعة",
     icon: TodayIcon,
     component: Appointments,
@@ -74,7 +74,7 @@ const dashboardRoutes = [
   },
   {
     path: "/share",
-    name: "Freigabe",
+    name: "Tobias",
     rtlName: "إخطارات",
     icon: ShareIcon,
     component: Share,
@@ -83,18 +83,10 @@ const dashboardRoutes = [
 
   {
     path: "/vaccination",
-    name: "Impfpass",
+    name: "Udo",
     rtlName: "خرائط",
     icon: Alarm,
     component: Vaccination,
-    layout: "/sidebar",
-  },
-  {
-    path: "/emergency",
-    name: "Notfalldaten",
-    rtlName: "إخطارات",
-    icon: LocalHospitalIcon,
-    component: Emergency,
     layout: "/sidebar",
   },
   {
@@ -103,23 +95,7 @@ const dashboardRoutes = [
     rtlName: "إخطارات",
     icon: Notifications,
     component: NotificationsPage,
-    layout: "/sidebar",
-  },
-  {
-    path: "/googleFit",
-    name: "GoogleFit",
-    rtlName: "لوحة القيادة",
-    icon: FitnessCenterIcon,
-    component: GoogleFit,
-    layout: "/sidebar",
-  },
-  {
-    path: "/smartDoc",
-    name: "Smart Doc",
-    rtlName: "إخطارات",
-    icon: SmartDocIcon,
-    component: SmartDoc,
-    layout: "/sidebar",
+    layout: "/navbar",
   },
   {
     path: "/doctor",
