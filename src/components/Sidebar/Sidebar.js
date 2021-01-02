@@ -61,10 +61,6 @@ class Sidebar extends React.Component {
       <List className={classes.list}>
         {routes.map((prop, key) => {
           if (prop.layout === "/sidebar" || (prop.layout === "/supervisor" && this.state.isAdminValue)) {
-            console.log(prop.path);
-            console.log(prop.layout);
-            console.log(prop.layout === "/sidebar");
-            console.log(this.state.isAdminValue);
             var activePro = " ";
             var listItemClasses;
             if (prop.path === "/upgrade-to-pro") {

@@ -37,6 +37,8 @@ import { grayColor } from "assets/jss/material-dashboard-react.js";
 import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core/styles";
 
+import { RiVipCrown2Fill } from "react-icons/ri";
+
 const styles = (theme) => ({
   root: {},
   text: {
@@ -144,6 +146,13 @@ class BottomAppBarMobile extends React.Component {
               to="/dashboard"
               label="Dashboard"
               icon={<HomeIcon />}
+            />
+
+            <BottomNavigationAction
+              component={Link}
+              to="/premium"
+              label="Premium"
+              icon={<RiVipCrown2Fill style={{ width: 25, height: 25 }} />}
             />
 
             <BottomNavigationAction

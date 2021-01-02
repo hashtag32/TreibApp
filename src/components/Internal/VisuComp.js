@@ -194,7 +194,7 @@ export default class VisuComp extends React.Component {
     });
   };
 
-  handlePropertyChange = (dbName, propertyName, event) => {
+  handlePropertyChangeWithProperty = (dbName, propertyName, event) => {
     var changedValue = event.target.value;
     this.setState({
       [dbName]: { ...this.state[dbName], [propertyName]: changedValue },

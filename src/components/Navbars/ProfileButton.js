@@ -44,10 +44,12 @@ import VisuComp from "components/Internal/VisuComp";
 const styles = (theme) => ({
   avatar: {
     backgroundColor: red[500],
+    height: 30,
+    width: 30,
   },
   avatarMobile: {
-    height: 25,
-    width: 25,
+    height: 30,
+    width: 30,
     backgroundColor: red[500],
   },
 });
@@ -118,7 +120,7 @@ class ProfileButton extends VisuComp {
               {this.state.UserProfile.firstName.charAt(0)}
             </Avatar>
           ) : (
-            <Person fontSize="large" />
+            <Person  />
           )}
         </Hidden>
       </React.Fragment>

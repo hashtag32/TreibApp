@@ -30,8 +30,27 @@ import classNames from "classnames";
 import { connect } from "react-redux";
 import grey from "@material-ui/core/colors/grey";
 import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 import { withStyles } from "@material-ui/core/styles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import HomeIcon from "@material-ui/icons/Home";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import { RiVipCrown2Fill } from "react-icons/ri";
+
+const styles = (theme) => ({
+  root: {
+    margin: "20px",
+    backgroundColor: "inherit",
+  },
+  Home: {
+    color: "inherit",
+  },
+  LinkNotification: {
+    color: "inherit",
+  },
+  Profile: {
+    color: "inherit",
+  },
+});
 
 class AdminNavbarLinks extends VisuComp {
   constructor(props) {
@@ -92,108 +111,49 @@ class AdminNavbarLinks extends VisuComp {
         <CommonComps commonProps={this.state.commonProps} />
         <Hidden smDown implementation="css">
           <div>
-            {/* <div className={classes.searchWrapper}>
-            <CustomInput
-              formControlProps={{
-                className: classes.margin + " " + classes.search,
+            <BottomNavigation
+              value={this.state.value}
+              onChange={(event, newValue) => {
+                this.setState({ value: newValue });
               }}
-              inputProps={{
-                placeholder: "Search",
-                inputProps: {
-                  "aria-label": "Search",
-                },
-              }}
-            />
-            <Button color="white" aria-label="edit" justIcon round>
-              <Search />
-            </Button>
-          </div> */}
-            <div className={classes.manager}>
-              <Link className={classes.LinkNotification} to="/premium">
-                <IconButton color="inherit">Premium</IconButton>
-              </Link>
-            </div>
+              showLabels
+              className={classes.root}
+            >
+              <BottomNavigationAction
+                component={Link}
+                to="/dashboard"
+                label="Dashboard"
+                icon={<HomeIcon />}
+              />
+              <BottomNavigationAction
+                component={Link}
+                to="/premium"
+                label="Premium"
+                icon={<RiVipCrown2Fill style={{ width: 25, height: 25 }} />}
+              />
 
-            <div className={classes.manager}>
-              <Link className={classes.LinkNotification} to="/dashboard">
-                <IconButton color="inherit">
-                  <Dashboard fontSize="large" />
-                </IconButton>
-              </Link>
-            </div>
-
-            <div className={classes.manager}>
-              <Link className={classes.LinkNotification} to="/notifications">
-                <IconButton color="inherit">
+              <BottomNavigationAction
+                component={Link}
+                to="/notifications"
+                label="Nachrichten"
+                icon={
                   <Badge
-                    badgeContent={this.state.Notifications.length}
+                    variant="dot"
+                    invisible={this.state.Notifications.length == 0}
                     color="secondary"
                   >
-                    <NotificationIcon fontSize="large" />
+                    <NotificationIcon />
                   </Badge>
-                </IconButton>
-              </Link>
-            </div>
+                }
+              />
 
-            <Popper
-              open={Boolean(this.state.openNotification)}
-              anchorEl={this.state.openNotification}
-              transition
-              disablePortal
-              className={
-                classNames({
-                  [classes.popperClose]: !this.state.openNotification,
-                }) +
-                " " +
-                classes.popperNav
-              }
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  id="notification-menu-list-grow"
-                  style={{
-                    transformOrigin:
-                      placement === "bottom" ? "center top" : "center bottom",
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener
-                      onClickAway={this.handleCloseNotification}
-                    >
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to="/notifications"
-                      >
-                        <MenuList role="menu">
-                          {this.state.Notifications.map((notificationItem) => (
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to="/notifications"
-                            >
-                              <MenuItem
-                                //todo add link
-                                className={classes.dropdownItem}
-                              >
-                                {notificationItem}
-                              </MenuItem>
-                            </Link>
-                          ))}
-                        </MenuList>
-                      </Link>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
-
-            <div className={classes.manager}>
-              <Link className={classes.LinkNotification} to="/user">
-                <IconButton color="inherit">
-                  <ProfileButton />
-                </IconButton>
-              </Link>
-            </div>
+              <BottomNavigationAction
+                component={Link}
+                to="/user"
+                label="Profil"
+                icon={<ProfileButton />}
+              />
+            </BottomNavigation>
           </div>
         </Hidden>
       </div>

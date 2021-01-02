@@ -264,7 +264,7 @@ class Supervisor extends VisuComp {
                       required
                       inputProps={{
                         value: this.state.medRecord.user_id,
-                        onChange: (e) => this.handlePropertyChange("medRecord","user_id", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","user_id", e),
                       }}
                       formControlProps={{
                         fullWidth: true,
@@ -277,7 +277,7 @@ class Supervisor extends VisuComp {
                       id="date"
                       inputProps={{
                         value: this.state.medRecord.date,
-                        onChange: (e) => this.handlePropertyChange("medRecord","date", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","date", e),
                       }}
                       formControlProps={{
                         fullWidth: true,
@@ -290,7 +290,7 @@ class Supervisor extends VisuComp {
                       id="doctor"
                       inputProps={{
                         value: this.state.medRecord.doctor,
-                        onChange: (e) => this.handlePropertyChange("medRecord","doctor", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","doctor", e),
                       }}
                       formControlProps={{
                         fullWidth: true,
@@ -303,7 +303,7 @@ class Supervisor extends VisuComp {
                       id="disease"
                       inputProps={{
                         value: this.state.medRecord.disease,
-                        onChange: (e) => this.handlePropertyChange("medRecord","disease", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","disease", e),
                       }}
                       formControlProps={{
                         fullWidth: true,
@@ -317,7 +317,7 @@ class Supervisor extends VisuComp {
                       id="disease"
                       inputProps={{
                         value: this.state.medRecord.category,
-                        onChange: (e) => this.handlePropertyChange("medRecord","category", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","category", e),
                       }}
                       formControlProps={{
                         fullWidth: true,
@@ -335,7 +335,7 @@ class Supervisor extends VisuComp {
                       }}
                       inputProps={{
                         value: this.state.medRecord.symptoms,
-                        onChange: (e) => this.handlePropertyChange("medRecord","symptoms", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","symptoms", e),
                         multiline: true,
                         rows: 5,
                       }}
@@ -353,7 +353,7 @@ class Supervisor extends VisuComp {
                       }}
                       inputProps={{
                         value: this.state.medRecord.diagnosis,
-                        onChange: (e) => this.handlePropertyChange("medRecord","diagnosis", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","diagnosis", e),
                         multiline: true,
                         rows: 5,
                       }}
@@ -370,7 +370,7 @@ class Supervisor extends VisuComp {
                       }}
                       inputProps={{
                         value: this.state.medRecord.moreInfo,
-                        onChange: (e) => this.handlePropertyChange("medRecord","moreInfo", e),
+                        onChange: (e) => this.handlePropertyChangeWithProperty("medRecord","moreInfo", e),
                         multiline: true,
                         rows: 5,
                       }}

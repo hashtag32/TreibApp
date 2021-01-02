@@ -26,6 +26,13 @@ import React from "react";
 import VisuComp from "components/Internal/VisuComp";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
+import { publicKeyProvided } from "components/Internal/Extraction";
+
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const styles = (theme) => ({
   cardCategoryWhite: {
@@ -73,6 +80,7 @@ class MedRecordsContent extends VisuComp {
       MedRecords: [],
       CategoryList: DefaultCategories,
       commonProps: { ...CommonCompsData, updateComp: this.updateComp },
+      openDocModal: false,
     };
     this.openModal = this.openModal.bind(this);
   }
@@ -89,8 +97,26 @@ class MedRecordsContent extends VisuComp {
     this.updateComp();
   }
 
-  updateComp = () => {
+  updateComp = async() => {
     this.fetchTable();
+
+    // Display Modal when
+    if (publicKeyProvided()) {
+      await this.timeout(15000);
+      this.openDocModal();
+    }
+  };
+
+  openDocModal = () => {
+    this.setState({
+      openDocModal: true,
+    });
+  };
+
+  testfunc = () => {
+    this.setState({
+      openDocModal: true,
+    });
   };
 
   // DB functions
@@ -105,31 +131,6 @@ class MedRecordsContent extends VisuComp {
     this.TableChanged(this.state.dbNameCategories, this.state.CategoryList);
   };
 
-  // uploadFile = (category, event) => {
-  //   event.preventDefault();
-  //   if (!this.checkLoginAndDisplay()) {
-  //     return;
-  //   }
-
-  //   Array.from(event.target.files).forEach(async (fileToUpload) => {
-  //     var isImage = fileToUpload.type.includes("image");
-  //     //todo: cleaner error catching
-  //     await uploadFile(fileToUpload).then((fileLink) => {
-  //       var newMedRecord = {
-  //         // link: fileLink,
-  //         fileLinks:[],
-  //         isImage: isImage,
-  //         date: getCurrentDate(),
-  //         doctor: "Dr. Schneider",
-  //         disease: "Erkältung",
-  //         category: category,
-  //         open: false,
-  //       };
-
-  //       this.addnewMedRecord(newMedRecord);
-  //     });
-  //   });
-  // };
 
   // Data Table changes
   addnewCategory = (newCategory) => {
@@ -223,6 +224,12 @@ class MedRecordsContent extends VisuComp {
     this.changeMedRecord(medRecord, "open", false);
   };
 
+  handleCloseModal = () => {
+    this.setState({
+      openDocModal: false,
+    });
+  };
+
   tableChanges = (medRecord, property, event) => {
     this.changeMedRecord(medRecord, property, event.target.value);
   };
@@ -280,7 +287,7 @@ class MedRecordsContent extends VisuComp {
     return (
       <div>
         <CommonComps commonProps={this.state.commonProps} />
-
+        <Button onClick={this.testfunc}>Testfunc</Button>
         <GridContainer>
           {this.state.CategoryList.length == 0 && (
             <GridItem xs={12} sm={12} md={12}>
@@ -338,6 +345,26 @@ class MedRecordsContent extends VisuComp {
             </GridItem>
           ))}
         </GridContainer>
+        <Dialog
+          open={this.state.openDocModal}
+          onClose={this.handleCloseModal}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Sind Sie Arzt?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Möchten Sie einen Befund schreiben? Loggen Sie sich als Arzt ein.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseModal} color="primary" autoFocus>
+              Verstanden
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

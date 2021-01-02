@@ -13,13 +13,15 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import PlainTable from "components/EditableTableReport/PlainTable.js";
 import PropTypes from "prop-types";
+import Grid from "@material-ui/core/Grid";
+
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
 
 import VisuComp from "components/Internal/VisuComp.js";
-import { checkUser } from "components/Internal/Checks.js";
+import { checkUser, getUserID } from "components/Internal/Checks.js";
 import { withStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -56,7 +58,8 @@ import Divider from "@material-ui/core/Divider";
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 
-import { RiVipCrown2Fill} from 'react-icons/ri';
+
+import { RiVipCrown2Fill } from "react-icons/ri";
 
 // function ListItemLink(props) {
 //   return <ListItem button component="a" {...props} />;
@@ -103,6 +106,19 @@ const styles = (theme) => ({
   },
 });
 
+function getListItem(content) {
+  return (
+    <GridItem xs={12} sm={6} md={4}>
+      <ListItem>
+        <ListItemIcon>
+          <RiVipCrown2Fill style={{ height: "25px", width: "25px" }} />
+        </ListItemIcon>
+        <ListItemText primary={content} />
+      </ListItem>
+    </GridItem>
+  );
+}
+
 class Premium extends VisuComp {
   constructor(props) {
     super(props);
@@ -134,14 +150,18 @@ class Premium extends VisuComp {
   // Required from CommonProps
   updateComp = () => {};
 
-  subscribe = () => {
+  subscribe = async () => {
     if (!this.checkLoginAndDisplay()) {
       return;
     }
 
-    this.displayPopUp(
-      "Dieses Feature kommt in Kürze. Danke für das Verständnis."
-    );
+    var requestData = {};
+
+    writeRequest(requestData, "premium").then(() => {
+      this.displayPopUp(
+        "Dieses Feature kommt in Kürze. Danke für das Verständnis."
+      );
+    });
   };
 
   render() {
@@ -157,53 +177,69 @@ class Premium extends VisuComp {
                 <h4 className={classes.cardTitleWhite}>
                   Genießen Sie Premium Features
                 </h4>
-
               </CardHeader>
               <CardBody>
+                <Typography align="center" variant="h4">
+                  Mehr Features
+                </Typography>
+
                 <List component="nav" aria-label="main mailbox folders">
-                  <ListItem>
-                    <ListItemIcon>
-                    <RiVipCrown2Fill style={{height:"25px", width:"25px"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary="24/7 Support " />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                    <RiVipCrown2Fill style={{height:"25px", width:"25px"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Priorität Anfragenbearbeitung" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                    <RiVipCrown2Fill style={{height:"25px", width:"25px"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Teilen von einzelnen Befunden" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                    <RiVipCrown2Fill style={{height:"25px", width:"25px"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Selbstzerstörungstimer der Freigabelinks" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                    <RiVipCrown2Fill style={{height:"25px", width:"25px"}}/>
-                    </ListItemIcon>
-                    <ListItemText primary="30 Tage Geld-Züruck-Garantie" />
-                  </ListItem>
-
-
-                  
+                  <GridContainer>
+                    {getListItem("24/7 Support")}
+                    {getListItem("Priorität Anfragenbearbeitung")}
+                    {getListItem("Teilen von einzelnen Befunden")}
+                    {getListItem("Teilen von einzelnen Befunden")}
+                    {getListItem("Selbstzerstörungstimer der Freigabelinks")}
+                    {getListItem("Befund Photo zu PDF")}
+                  </GridContainer>
                 </List>
+
+                <Typography align="center" variant="h4">
+                  Grüne Umwelt
+                </Typography>
+                <List component="nav" aria-label="main mailbox folders">
+                  <GridContainer>
+                    {getListItem(
+                      "Von jedem Abo gehen 1€ direkt in die Pflanzung von Bäumen"
+                    )}
+                  </GridContainer>
+                </List>
+
+                <Typography align="center" variant="h4">
+                  Unterstütze Uns
+                </Typography>
+                <List component="nav" aria-label="main mailbox folders">
+                  <GridContainer>
+                    {getListItem(
+                      "Jedes Abo hilft uns neue Feature zu entwickeln"
+                    )}
+                  </GridContainer>
+                </List>
+
+                <Typography align="center" variant="h4">
+                  Abo
+                </Typography>
+                <List component="nav" aria-label="main mailbox folders">
+                  <GridContainer>
+                    {getListItem("30 Tage Geld-Züruck-Garantie")}
+                    {getListItem("Monatlich kündbar")}
+                  </GridContainer>
+                </List>
+                <Typography align="right" variant="h4">
+                  20€/Monat
+                </Typography>
               </CardBody>
               <CardFooter>
-                <Button
-                  className={classes.submitButton}
-                  color="primary"
-                  onClick={this.subscribe}
-                >
-                  Jetzt aktivieren
-                </Button>
+                <Grid container justify="flex-end">
+                  <Button
+                    align="right"
+                    className={classes.submitButton}
+                    color="primary"
+                    onClick={this.subscribe}
+                  >
+                    Aktivieren
+                  </Button>
+                </Grid>
               </CardFooter>
             </Card>
           </GridItem>
