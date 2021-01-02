@@ -181,12 +181,9 @@ class Dashboard extends VisuComp {
       <div>
         <CommonComps commonProps={this.state.commonProps} />
 
-        <Typography variant="h4">
-          Feinstaub in Eppelborn
-          </Typography>
+        <Typography variant="h4">Feinstaub in Eppelborn</Typography>
 
-        <Typography variant="body1">
-
+        <Typography variant="h5">
           <br />
           PM10: {this.state.PM10}
           <br />

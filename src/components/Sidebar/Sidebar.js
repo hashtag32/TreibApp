@@ -125,7 +125,7 @@ class Sidebar extends React.Component {
     var brand = (
       <div className={classes.logo}>
         <a
-          href="https://spexdoc.net"
+          href="https://treibapp.web.app"
           className={classNames(classes.logoLink, {
             [classes.logoLinkRTL]: this.props.rtlActive,
           })}
