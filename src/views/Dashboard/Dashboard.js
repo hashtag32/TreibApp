@@ -28,6 +28,7 @@ import TestComp from "components/VisuComps/TestComp.js";
 import Typography from "@material-ui/core/Typography";
 import Update from "@material-ui/icons/Update";
 import VisuComp from "components/Internal/VisuComp.js";
+import Weather from "views/Dashboard/Weather";
 import {
   getStringDate,
   getCurrentDate,
@@ -36,6 +37,8 @@ import Warning from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import { withStyles } from "@material-ui/core/styles";
+
+import ReactWeather, { useOpenWeather } from "react-open-weather";
 
 const useStyles = makeStyles(styles);
 class Dashboard extends VisuComp {
@@ -54,6 +57,9 @@ class Dashboard extends VisuComp {
   componentDidMount() {
     console.log(this.props);
     this.updateComp();
+
+    setInterval(this.updateComp, 120000); // runs every 2 minutes
+
   }
 
   componentDidUpdate(prevProps) {
@@ -177,19 +183,34 @@ class Dashboard extends VisuComp {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         <CommonComps commonProps={this.state.commonProps} />
 
-        <Typography variant="h4">Feinstaub in Eppelborn</Typography>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <Card>
+              <CardHeader color="primary">
+                <h4 className={classes.cardTitleWhite}>Feinstaub</h4>
+                <p className={classes.cardCategoryWhite}>Eppelborn</p>
+              </CardHeader>
+              <CardBody>
+                <Typography variant="h5">
+                  <br />
+                  PM10: {this.state.PM10}
+                  <br />
+                  PM25: {this.state.PM25}
+                  <br />
+                </Typography>
+              </CardBody>
+            </Card>
+          </GridItem>
 
-        <Typography variant="h5">
-          <br />
-          PM10: {this.state.PM10}
-          <br />
-          PM25: {this.state.PM25}
-          <br />
-        </Typography>
+          <GridItem xs={12} sm={12} md={12}>
+            <Weather />
+          </GridItem>
+        </GridContainer>
       </div>
     );
   }
