@@ -73,15 +73,6 @@ const dashboardRoutes = [
     layout: "/sidebar",
   },
   {
-    path: "/share",
-    name: "Tobias",
-    rtlName: "إخطارات",
-    icon: ShareIcon,
-    component: Share,
-    layout: "/sidebar",
-  },
-
-  {
     path: "/vaccination",
     name: "Udo",
     rtlName: "خرائط",

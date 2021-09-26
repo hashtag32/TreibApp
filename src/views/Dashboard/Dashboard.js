@@ -29,18 +29,92 @@ import Typography from "@material-ui/core/Typography";
 import Update from "@material-ui/icons/Update";
 import VisuComp from "components/Internal/VisuComp.js";
 import Weather from "views/Dashboard/Weather";
+import AQIElement from "components/VisuComps/AQIElement";
+
 import {
   getStringDate,
   getCurrentDate,
 } from "components/Internal/VisuElements.js";
 import Warning from "@material-ui/icons/Warning";
 import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+// import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import { withStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 
 import ReactWeather, { useOpenWeather } from "react-open-weather";
 
-const useStyles = makeStyles(styles);
+const styles = (theme) => ({
+  cardCategoryWhite: {
+    "&,& a,& a:hover,& a:focus": {
+      color: "rgba(255,255,255,.62)",
+      margin: "0",
+      fontSize: "14px",
+      marginTop: "0",
+      marginBottom: "0",
+    },
+    "& a,& a:hover,& a:focus": {
+      color: "#FFFFFF",
+    },
+  },
+  cardTitleWhite: {
+    color: "#FFFFFF",
+    marginTop: "0px",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none",
+    "& small": {
+      color: "#777",
+      fontSize: "65%",
+      fontWeight: "400",
+      lineHeight: "1",
+    },
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  shape: {
+    backgroundColor: "this.props.bgColor",
+    width: 40,
+    height: 40,
+  },
+  shapeCircle: {
+    borderRadius: "50%",
+  },
+  circleStyle: {
+    backgroundColor: "#00af50",
+    width: 40,
+    height: 40,
+
+    borderRadius: "50%",
+  },
+});
+
+// const Circle = React.createClass({
+//   render:function(){
+//     var circleStyle = {
+//       padding:10,
+//       margin:20,
+//       display:"inline-block",
+//       // position:'absolute',
+//       backgroundColor: this.props.bgColor,
+//       borderRadius: "50%",
+//       width:100,
+//       height:100,
+//       left:0,
+//       top:0
+//     };
+//     return (
+//       <div style={circleStyle}>
+//       </div>
+//     );
+//   }
+// });
+
+// const useStyles = makeStyles(styles);
 class Dashboard extends VisuComp {
   constructor(props) {
     super(props);
@@ -59,7 +133,6 @@ class Dashboard extends VisuComp {
     this.updateComp();
 
     setInterval(this.updateComp, 120000); // runs every 2 minutes
-
   }
 
   componentDidUpdate(prevProps) {
@@ -197,11 +270,9 @@ class Dashboard extends VisuComp {
               </CardHeader>
               <CardBody>
                 <Typography variant="h5">
-                  <br />
-                  PM10: {this.state.PM10}
-                  <br />
-                  PM25: {this.state.PM25}
-                  <br />
+                  <AQIElement name="PM10" value={this.state.PM10} />
+
+                  <AQIElement name="PM25" value={this.state.PM25} />
                 </Typography>
               </CardBody>
             </Card>
